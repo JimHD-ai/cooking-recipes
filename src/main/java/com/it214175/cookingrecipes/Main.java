@@ -1,9 +1,11 @@
+package com.it214175.cookingrecipes;
+
 import com.models.Recipe;
 import com.models.Ingredient;
+import com.models.Step;
 import services.RecipeManager;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -13,10 +15,8 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) {
         if (args.length == 0) {
-            // Εμφανίζει οδηγίες χρήσης εάν δεν δοθούν ορίσματα
-            System.out.println("Χρήση:");
-            System.out.println("Για εμφάνιση συνταγής: java -jar recipes.jar <recipe_file.cook>");
-            System.out.println("Για λίστα αγορών: java -jar recipes.jar -list <recipe1.cook> <recipe2.cook> ...");
+            // Εμφανίζει οδηγίες χρήσης εάν δε δοθούν ορίσματα
+            System.out.println("Δεν έχει δοθεί συνταγή");
             return;
         }
 
@@ -58,7 +58,7 @@ public class Main {
         recipe.getUtensils().forEach(utensil -> System.out.println("- " + utensil));
 
         System.out.println("\nΣυνολικός Χρόνος:");
-        int totalSeconds = recipe.getSteps().stream().mapToInt(step -> step.getTimeInSeconds()).sum();
+        int totalSeconds = recipe.getSteps().stream().mapToInt(Step::getTimeInSeconds).sum();
         System.out.println(totalSeconds / 60 + " λεπτά");
 
         System.out.println("\nΒήματα:");

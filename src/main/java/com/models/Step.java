@@ -1,9 +1,18 @@
-package com.recipes.models;
+package com.models;
 
+/**
+ * Αναπαριστά ένα βήμα στην προετοιμασία μιας συνταγής.
+ */
 public class Step {
-    private String description;
-    private int timeInSeconds;
+    private String description; // Περιγραφή του βήματος
+    private int timeInSeconds; // Χρόνος που απαιτείται για το βήμα, σε δευτερόλεπτα
 
+    /**
+     * Κατασκευαστής για δημιουργία ενός αντικειμένου βήματος.
+     *
+     * @param description Η περιγραφή του βήματος.
+     * @param timeInSeconds Ο χρόνος που απαιτείται για το βήμα.
+     */
     public Step(String description, int timeInSeconds) {
         this.description = description;
         this.timeInSeconds = timeInSeconds;
@@ -27,9 +36,6 @@ public class Step {
 
     @Override
     public String toString() {
-        return "Step{" +
-                "description='" + description + '\'' +
-                ", timeInSeconds=" + timeInSeconds +
-                '}';
+        return description + " (" + timeInSeconds + " δευτερόλεπτα)";
     }
 }
